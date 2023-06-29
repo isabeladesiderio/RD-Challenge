@@ -29,7 +29,7 @@ func CustomerSuccessBalancing(customerSuccess []Entity, customers []Entity, cust
 
 	multipleMax := CheckMultipleMaxCustomers(customerCount, maxCustomers)
 	if multipleMax {
-		err := errors.New("More than one Customer Success with the same maximum number of customers")
+		err := errors.New("Mais de um Customer Success com o mesmo número máximo de clientes")
 		fmt.Println(err)
 		return 0
 	}
@@ -38,7 +38,7 @@ func CustomerSuccessBalancing(customerSuccess []Entity, customers []Entity, cust
 
 	customerSuccessIndex := FindCustomerSuccessIndexByID(customerSuccess, maxCustomerSuccessID)
 	if customerSuccessIndex == 0 {
-		err := errors.New("Customer Success not found")
+		err := errors.New("Customer Success não encontrado")
 		fmt.Println(err)
 		return 0
 	}

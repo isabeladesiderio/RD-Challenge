@@ -15,7 +15,6 @@ const (
 )
 
 func CheckCustomerSuccessEntities(customerSuccess []Entity) []Entity {
-
 	for _, cs := range customerSuccess {
 		if cs.Score < minCsScore || cs.Score > maxCsScore {
 			err := errors.New("CSs Score must be between 0 and 1000")
@@ -35,8 +34,8 @@ func CheckCustomerSuccessEntities(customerSuccess []Entity) []Entity {
 		err := errors.New("CSs count cannot exceed 1000")
 		fmt.Println(err)
 	}
-	return customerSuccess
 
+	return customerSuccess
 }
 
 func CheckDuplicateCSScore(customerSuccess []Entity) []Entity {
@@ -54,18 +53,15 @@ func CheckDuplicateCSScore(customerSuccess []Entity) []Entity {
 	if foundDuplicate {
 		err := errors.New("CSs cannot have the same score")
 		fmt.Println(err)
-
 	}
 
 	return customerSuccess
 }
 
 func FindClosestCSToCustomer(customers []Entity, customerCount map[int]int) map[int]int {
-
 	minDiff := 0
 	closestCSID := 0
 
-	// Ordenar a lista de Customer Success pelo score em ordem crescente
 	sort.SliceStable(customers, func(i, j int) bool {
 		return customers[i].Score < customers[j].Score
 	})
@@ -100,5 +96,4 @@ func FindCSWithHighestCustomers(customerCount map[int]int) int {
 	}
 
 	return maxCustomers
-
 }

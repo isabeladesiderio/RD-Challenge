@@ -2,19 +2,21 @@ package csbalancing_test
 
 import (
 	"testing"
+	"time"
 
 	"github.com/ResultadosDigitais/developer_challenges/go/internal/csbalancing"
 )
 
 func TestCustomerSuccessBalancing(t *testing.T) {
 
-	// t.Run("Scenario 3", func(t *testing.T) {
-	// 	timeout := 10 * time.Millisecond
-	// 	benchResult := testing.Benchmark(Scenario03)
-	// 	if benchResult.T > timeout {
-	// 		t.Errorf("Scenario 03 took %s, must take less than 10 milliseconds", benchResult.T)
-	// 	}
-	// })
+	t.Run("Scenario 3", func(t *testing.T) {
+		timeout := 10 * time.Millisecond
+		benchResult := testing.Benchmark(Scenario03)
+		if benchResult.T > timeout {
+			t.Errorf("Scenario 03 took %s, must take less than 10 milliseconds", benchResult.T)
+
+		}
+	})
 
 	var testScenarios = []struct {
 		name                string
@@ -76,14 +78,14 @@ func TestCustomerSuccessBalancing(t *testing.T) {
 			customerSuccessAway: []int{1, 3, 2},
 			expected:            0,
 		},
-		// {
-		// 	name:                "Scenario 7",
-		// 	timeoutScenario:     false,
-		// 	customerSuccess:     buildEntities([]int{100, 99, 88, 3, 4, 5}),
-		// 	customers:           buildEntities([]int{10, 10, 10, 20, 20, 30, 30, 30, 20, 60}),
-		// 	customerSuccessAway: []int{4, 5, 6},
-		// 	expected:            3,
-		// },
+		{
+			name:                "Scenario 7",
+			timeoutScenario:     false,
+			customerSuccess:     buildEntities([]int{100, 99, 88, 3, 4, 5}),
+			customers:           buildEntities([]int{10, 10, 10, 20, 20, 30, 30, 30, 20, 60}),
+			customerSuccessAway: []int{4, 5, 6},
+			expected:            3,
+		},
 		{
 			name:                "Scenario 8",
 			timeoutScenario:     false,
@@ -148,6 +150,7 @@ func Scenario03(b *testing.B) {
 			csbalancing.CustomerSuccessBalancing(customerSuccess, customers, customerSuccessAway)
 		}
 	})
+
 }
 
 func buildEntities(Scores []int) []csbalancing.Entity {

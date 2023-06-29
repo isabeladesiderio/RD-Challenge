@@ -14,7 +14,6 @@ const (
 )
 
 func CheckCustomerEntities(customers []Entity) []Entity {
-
 	for _, ct := range customers {
 		if ct.Score < minCtScore || ct.Score > maxCtScore {
 			err := errors.New("Customer Score must be between 0 and 100000")
